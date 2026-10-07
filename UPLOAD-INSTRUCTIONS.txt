@@ -1,0 +1,15 @@
+《一個人也可以好好過生日》V1｜正式素材整合上傳說明
+
+本包只更新正式素材與 app.js；原網站 index.html、styles.css、三支已存在的根目錄影片及十張根目錄數字蠟燭都不要刪除或重新命名。
+
+1. 下載 ZIP，解壓縮。
+2. 開啟 GitHub Repository birthday-just-for-me-caicai- 的根目錄 → Add file → Upload files。
+3. 將「upload」資料夾裡面的檔案與 candle-states 資料夾拖入上傳區。請確認 GitHub 顯示 candle-states/lit、blowing、extinguished、smoke、unlit 的各十張圖片；不要把 ZIP 檔直接上傳到 Repository。
+4. 確認 app.js 顯示為更新，其餘新素材顯示為新增，按 Commit changes。
+5. 等 GitHub Pages 發布後，用無痕視窗開網站，從首頁測試一次完整流程；影片需要點擊「播放影片」，可按下方按鈕跳過。iPhone 可用 Safari 測試麥克風，若不允許仍可長按吹熄。
+
+根目錄既有影片：morning-female.mp4、morning-male.mp4、cake-delivery.mp4。
+根目錄既有數字蠟燭：candle_0.png 至 candle_9.png。
+本包新素材：birthday-final.mp4、birthday-song.mp4、background-music.m4a、cake-still.jpg、candle-states/（五組正式狀態素材）。
+
+背景音樂 m4a 是從提供的正式 MP4 無重編碼擷取 AAC 音軌，無須自行轉檔，也不會載入該影片的影像。
