@@ -24,5 +24,30 @@
   <button id="music-toggle" class="music-toggle" type="button" aria-label="開啟音樂" aria-pressed="false">♫ 音樂關</button>
   <audio id="birthday-music" loop preload="none"></audio>
   <div id="notice" class="notice" role="status" aria-live="polite"></div>
+  <script>
+    (() => {
+      const app = document.getElementById('app');
+      function addReplayButton() {
+        const card = app.querySelector('.card-panel');
+        if (!card || card.querySelector('[data-action="restart"], [data-home-replay]')) return;
+        const actions = card.querySelector('.actions');
+        if (!actions) return;
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'secondary';
+        button.dataset.homeReplay = '';
+        button.textContent = '回到首頁・重新試玩';
+        actions.appendChild(button);
+      }
+      new MutationObserver(addReplayButton).observe(app, {childList: true, subtree: true});
+      addReplayButton();
+      app.addEventListener('click', event => {
+        if (!event.target.closest('[data-home-replay]')) return;
+        if (!confirm('重新開始會清除這台裝置本次的回答與進度。要回到首頁嗎？')) return;
+        try { localStorage.removeItem('caicai-birthday-v1'); } catch (_) {}
+        location.reload();
+      });
+    })();
+  </script>
 </body>
 </html>
