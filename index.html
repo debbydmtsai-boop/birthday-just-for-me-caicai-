@@ -7,44 +7,8 @@
   <meta name="description" content="一個人也可以好好過生日。把今天，完整地還給自己。">
   <title>一個人也可以好好過生日</title>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23f8f1e6'/%3E%3Cpath d='M11 36h42v16H11z' fill='%23a66d59'/%3E%3Cpath d='M9 32q7-8 14 0 7-8 14 0 7-8 18 0v8H9z' fill='%23f6d8bf'/%3E%3Cpath d='M30 19h4v12h-4z' fill='%23b88455'/%3E%3Cpath d='M32 8q9 9 0 13-9-4 0-13' fill='%23eab85e'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="styles.css?v=20261008-ritual">
-  <script src="app.js?v=20261008-ritual" defer></script>
-  <style>
-    /* Homepage-only refinements; later stages continue to use styles.css. */
-    #app .welcome-panel .opening-mark {
-      position: relative;
-      z-index: 1;
-      font-size: clamp(6.75rem, 29vw, 7.7rem);
-      line-height: 1.05;
-      margin: 2px auto 12px;
-      pointer-events: none;
-    }
-    #app .welcome-panel .welcome-copy {
-      display: grid;
-      place-items: center;
-      width: 100%;
-      min-height: clamp(7.2rem, 20vw, 8.8rem);
-      margin: 0 auto 10px;
-    }
-    #app .welcome-panel .welcome-copy > * {
-      grid-area: 1 / 1;
-      width: 100%;
-      min-height: 0;
-      margin: 0;
-    }
-    #app .welcome-panel .welcome-next { font-size: clamp(1.25rem, 5.6vw, 2rem); }
-    #app .welcome-panel .welcome-line { display: block; white-space: nowrap; }
-    #app .welcome-panel .welcome-sparkles { pointer-events: none !important; }
-    #app .welcome-panel > button[data-action="start"] {
-      position: relative;
-      z-index: 5;
-      pointer-events: auto !important;
-      touch-action: manipulation;
-    }
-    @media (max-height: 680px) {
-      #app .welcome-panel .opening-mark { font-size: 6.75rem; margin-bottom: 6px; }
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css?v=20261008-cover">
+  <script src="app.js?v=20261008-cover" defer></script>
   <script>
     /* Optional display font: never hold up the homepage if the font network is slow. */
     (() => {
@@ -60,46 +24,17 @@
 <body>
   <div class="ambient ambient-one" aria-hidden="true"></div><div class="ambient ambient-two" aria-hidden="true"></div>
   <main id="app" class="shell" aria-live="polite">
-    <section class="panel intro welcome-panel">
-      <div class="welcome-sparkles" aria-hidden="true"><i>✦</i><i>✿</i><i>✧</i><i>✿</i><i>✦</i><i>✧</i></div>
-      <div class="eyebrow">一個人也可以好好過生日</div>
-      <div class="opening-mark" aria-hidden="true">🎁</div>
-      <div class="welcome-copy">
-        <p class="welcome-first"><span class="welcome-line">今天</span><span class="welcome-line">有一份驚喜</span><span class="welcome-line">只留給你</span></p>
-        <h1 class="welcome-next"><span class="welcome-line">在生日開始之前，</span><span class="welcome-line">讓我們先認識你一點。</span></h1>
+    <section class="cover-panel" aria-label="一個人也可以好好過生日">
+      <div class="cover-frame">
+        <img class="cover-image" src="一個人好好過生日首頁圖片.PNG" alt="一個人也要好好過生日：蔡蔡坐在禮物盒與放著生日蛋糕的書本旁" onerror="this.hidden=true;this.parentElement.classList.add('cover-image-missing')">
+        <button class="cover-cake-hit" type="button" data-action="start" aria-label="輕觸蛋糕，開始今天的生日故事"><span class="cover-button-fallback">開始我的生日</span></button>
+        <p class="cover-hint">輕觸蛋糕，開始今天的生日故事</p>
       </div>
-      <p class="lead">今天的故事，從你開始。</p>
-      <button class="primary" type="button" data-action="start">☀️ 開始我的生日</button>
     </section>
   </main>
   <button id="music-toggle" class="music-toggle" type="button" aria-label="開啟音樂" aria-pressed="false">♫ 音樂關</button>
-  <audio id="birthday-music" loop preload="none"></audio>
+  <audio id="birthday-music" src="background-music.m4a" loop preload="none"></audio>
   <div id="notice" class="notice" role="status" aria-live="polite"></div>
-  <script>
-    (() => {
-      const app = document.getElementById('app');
-      function refineHomepage() {
-        const panel = app.querySelector('.welcome-panel');
-        if (!panel) return;
-        const first = panel.querySelector('.welcome-first');
-        const title = panel.querySelector('.welcome-next');
-        if (first && !first.querySelector('.welcome-line')) {
-          first.innerHTML = '<span class="welcome-line">今天</span><span class="welcome-line">有一份驚喜</span><span class="welcome-line">只留給你</span>';
-        }
-        if (title && !title.querySelector('.welcome-line')) {
-          title.innerHTML = '<span class="welcome-line">在生日開始之前，</span><span class="welcome-line">讓我們先認識你一點。</span>';
-        }
-        if (first && title && !panel.querySelector('.welcome-copy')) {
-          const copy = document.createElement('div');
-          copy.className = 'welcome-copy';
-          first.before(copy);
-          copy.append(first, title);
-        }
-      }
-      new MutationObserver(refineHomepage).observe(app, {childList: true});
-      refineHomepage();
-    })();
-  </script>
   <script>
     (() => {
       const app = document.getElementById('app');

@@ -55,3 +55,19 @@ body.immersive-video .video-frame{position:relative;z-index:0;width:min(calc(100
 [hidden]{display:none!important}
 @media(max-width:390px){body.immersive-video .video-panel h1{font-size:1.45rem}.immersive-video .video-frame{width:min(calc(100vw - 20px),calc((100dvh - 220px)*.8))}}
 @media(prefers-reduced-motion:reduce){.welcome-first{display:none}.welcome-next{animation:none;opacity:1}.welcome-sparkles,.welcome-panel .opening-mark,.candle-flame{animation:none}.welcome-sparkles{display:none}}
+
+/* The supplied 4:5 cover remains a single image; only the cake is interactive. */
+.cover-panel{width:100%;max-width:510px;margin:auto}
+.cover-frame{position:relative;isolation:isolate;width:100%;aspect-ratio:1122/1402;overflow:hidden;border-radius:18px;background:#f7e5c8;box-shadow:0 16px 40px #9e714433}
+.cover-image{display:block;width:100%;height:100%;object-fit:contain;pointer-events:none;user-select:none;-webkit-user-select:none}
+.cover-cake-hit{position:absolute;z-index:3;left:66.5%;top:60.5%;width:28%;height:15.3%;padding:0;border:0;background:transparent;cursor:pointer;touch-action:manipulation;-webkit-tap-highlight-color:transparent;-webkit-clip-path:polygon(30% 0,73% 0,77% 25%,92% 30%,98% 45%,98% 84%,100% 93%,95% 100%,4% 100%,0 92%,2% 47%,8% 30%,26% 25%);clip-path:polygon(30% 0,73% 0,77% 25%,92% 30%,98% 45%,98% 84%,100% 93%,95% 100%,4% 100%,0 92%,2% 47%,8% 30%,26% 25%)}
+.cover-cake-hit::before{content:"";position:absolute;inset:8% 2% 2%;border-radius:45%;background:radial-gradient(ellipse at 50% 60%,#fff2ae33 0,#ffe2a91e 50%,transparent 75%);box-shadow:0 0 18px #ffe5a640;opacity:.34;pointer-events:none;animation:cover-cake-breathe 3.8s ease-in-out infinite}
+.cover-cake-hit:focus-visible{outline:3px solid #824a32;outline-offset:2px}
+.cover-button-fallback{display:none}
+.cover-hint{position:absolute;z-index:2;bottom:2.7%;left:50%;transform:translateX(-50%);width:max-content;max-width:94%;margin:0;padding:7px 12px;border-radius:999px;background:#fff9e7e6;color:#5d3b30;font-size:clamp(.84rem,3.6vw,1.05rem);font-weight:800;line-height:1.45;text-align:center;white-space:nowrap;box-shadow:0 3px 12px #9d70402e;pointer-events:none}
+@keyframes cover-cake-breathe{50%{opacity:.62;box-shadow:0 0 24px #ffe2a65c}}
+.cover-image-missing::before{content:"一個人也可以好好過生日";position:absolute;top:25%;left:4%;right:4%;color:#704634;text-align:center;font-size:1.45rem;font-weight:800}
+.cover-image-missing .cover-cake-hit{left:14%;top:46%;width:72%;height:56px;border:1px solid #e1a23e;border-radius:999px;background:#ffda70;-webkit-clip-path:none;clip-path:none;box-shadow:0 6px 16px #a56c3f44}
+.cover-image-missing .cover-cake-hit::before,.cover-image-missing .cover-hint{display:none}
+.cover-image-missing .cover-button-fallback{display:block;color:#4d3440;font-size:1rem;font-weight:800}
+@media(prefers-reduced-motion:reduce){.cover-cake-hit::before{animation:none}}
