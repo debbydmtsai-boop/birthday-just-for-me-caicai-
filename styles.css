@@ -44,10 +44,11 @@ body.immersive-video .video-frame{position:relative;z-index:0;width:min(calc(100
 .immersive-video .video-panel .actions{position:relative;z-index:11;isolation:isolate;pointer-events:auto;width:min(94vw,440px);margin-top:12px;gap:6px}
 .immersive-video .video-panel .actions button{position:relative;z-index:12;pointer-events:auto;touch-action:manipulation}
 .morning-finale{position:absolute;left:0;right:0;bottom:8%;padding:15px 12px;color:white;font-size:1.25rem;font-weight:800;text-shadow:0 3px 9px #3b365c,0 0 15px #68496e;background:linear-gradient(transparent,#3e375a55);pointer-events:none;animation:appear 1.2s ease both}
-.cake-still-end{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#dfaf8d;opacity:0;pointer-events:none;transition:opacity 1.2s ease}.cake-still-end.visible{opacity:1}
-.cake-scene{background:#a7b6ca}.candles{top:17%;width:34%;height:23%;transform:translateX(-50%);gap:3%;align-items:flex-end;pointer-events:none}
-.candle-slot{position:relative;height:100%;flex:0 1 48%}.candle-img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
-.candle-flame{position:absolute;z-index:2;left:50%;top:-5%;width:22%;height:18%;transform:translateX(-50%) rotate(42deg);border-radius:80% 0 72% 68%;background:radial-gradient(circle at 62% 64%,#fffbd9 0 18%,#ffe57b 42%,#ffa747 75%,#ef792e 100%);box-shadow:0 0 14px 5px #ffd75c88;transform-origin:50% 85%;animation:flame-waver 1.65s ease-in-out infinite alternate;transition:opacity .65s,filter .65s}
+.video-frame .cake-scene{position:absolute;inset:0;z-index:1;width:100%;height:100%;aspect-ratio:auto;margin:0;border-radius:0;box-shadow:none;opacity:0;pointer-events:none;transition:opacity 1.2s ease,filter 1.3s ease}
+.video-frame .cake-scene.visible{opacity:1}
+.cake-scene{background:#a7b6ca}.candles{top:17%;width:36%;height:23%;transform:translateX(-50%);gap:2%;align-items:flex-end;pointer-events:none;z-index:2}
+.candle-slot{position:relative;height:100%;width:auto;aspect-ratio:308/512;flex:0 0 auto;min-width:0}.candle-img{position:absolute;inset:0;width:100%;height:100%;object-fit:fill}
+.candle-flame{position:absolute;z-index:2;left:var(--wick-x,50%);top:calc(var(--wick-y,19%) - 16%);width:22%;height:18%;transform:translateX(-50%) rotate(42deg);border-radius:80% 0 72% 68%;background:radial-gradient(circle at 62% 64%,#fffbd9 0 18%,#ffe57b 42%,#ffa747 75%,#ef792e 100%);box-shadow:0 0 14px 5px #ffd75c88;transform-origin:50% 85%;animation:flame-waver 1.65s ease-in-out infinite alternate;transition:opacity .65s,filter .65s}
 .candles.extinguished .candle-flame{animation:none;opacity:0;filter:blur(5px)}
 @keyframes flame-waver{from{transform:translateX(-50%) rotate(36deg) scale(.95)}to{transform:translateX(-50%) rotate(48deg) scale(1.07)}}
 .memory-card{border-color:#e9b6cc;background:linear-gradient(155deg,#fffdf6,#ffedf1 55%,#edf4ff);box-shadow:0 18px 30px #bd8aaf35}.male .memory-card{border-color:#a8cfc3;background:linear-gradient(155deg,#fffdf6,#e9f8f4 55%,#eaf2ff)}
